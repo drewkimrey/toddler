@@ -1,0 +1,17 @@
+@import "../bower_components/foundation/scss/foundation.scss";
+@import "../bower_components/foundation-icons/foundation_icons_general/sass/general_foundicons.scss";
+
+[class*="foundicon-"]{
+    &.tiny {
+        font-size: .5em;
+    }
+    &.small {
+        font-size: .8em;
+    }
+    &.large {
+        font-size: 1.2em;
+    }
+    .remove {
+        color: $alert-color;
+    }
+}

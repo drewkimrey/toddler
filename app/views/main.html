@@ -1,0 +1,100 @@
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1>
+                <a href="#">
+                    toddler.io
+                </a>
+            </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+</nav>
+<div data-ng-controller="toddlerController">
+    <div class="row">
+        <div class="large-4 columns">
+            <h4>First Names</h4>
+            <div class="panel">
+                <form ng-submit="addFirstName()">
+                    <input type="text" name="first-name" placeholder="First Name" ng-model="firstName">
+                </form>
+                <div id="first-name-well">
+                    <div data-ng-repeat="name in firstNames" class="names">
+                        <span>{{ name }}
+                        <i ng-click="removeFirstName(name)" class="foundicon-remove tiny remove"></i>
+                       </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="large-4 columns">
+            <h4>Middle Names</h4>
+            <div class="panel">
+                <form ng-submit="addMiddleName()">
+                    <input type="text" name="middle-name" placeholder="Middle Name" ng-model="middleName">
+                </form>
+                <div id="middle-name-well">
+                    <div data-ng-repeat="name in middleNames" class="names">
+                        {{ name }}
+                        <i ng-click="removeMiddleName(name)" class="foundicon-remove tiny remove"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="large-4 columns">
+            <h4>Last Name</h4>
+            <div class="panel">
+                <form>
+                    <input type="text" name="middle-name" placeholder="Last Name" ng-model="lastName">
+                </form>
+                <div id="last-name-well">
+                    <div>
+                        {{ lastName }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12  columns">
+            <h5>Possible names</h5>
+            <div class="row collapse">
+                <div class="small-3 large-2 columns">
+                    <span class="prefix">Sort By</span>
+                </div>
+                <div class="small-1 large-1 columns">
+                    <select ng-model="searchOn" ng-change="setSearchFilter()">
+                        <option value="first" selected="selected" ng-selected="true">First</option>
+                        <option value="middle">Middle</option>
+                    </select>
+                </div>
+                <div class="small-8 large-9 columns">
+                    <input type="text" ng-model="userQuery" ng-change="setSearchFilter()" placeholder="name">
+                </div>
+            </div>
+            <div class="panel">
+                <div id="possible-name-well">
+                    <div data-ng-repeat="name in combinedNames | orderBy:'first' | filter:searchFilter">
+                        {{ name.first }} {{name.middle}} {{ lastName }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Grid Section -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+                <p>&copy; Kimrey's </p>
+            </div>
+        </div>
+    </div>
+</footer>
